@@ -31,34 +31,35 @@ Key libraries:
 
 ## Configuration
 
-All configuration is done via environment variables (usually through a `.env` file). See `config.py` for details.
+All configuration is done via environment variables, through a `.env` file. You can copy the file `.env.example` into a `.env` file and edit the values.
 
 ### Core keys / wallet
 
-- **`POLYMARKET_PRIVATE_KEY`** – Private key for your **copier** wallet (or proxy key).
-- **`POLYMARKET_PROXY_ADDRESS`** – Copier proxy wallet address (also used as `copier_address` in `main.py`).
+- **`POLYMARKET_PRIVATE_KEY`** – Private key used to sign orders and transactions for your **copier** wallet. If you connected to Polymarket with a Web3 wallet (Metamask, Phantom...), then you should input the private key of this wallet.
+- **`POLYMARKET_PROXY_ADDRESS`** – Copier proxy wallet address. This the Polymarket address shown on your profile when you click "Copy Address".
 
 ### CLOB client
 
-- **`CLOB_HOST`** – CLOB API host (default `https://clob.polymarket.com`).
-- **`CHAIN_ID`** – Polygon chain ID (default `137`).
-- **`SIGNATURE_TYPE`** – Signature type for `ClobClient` (default `2`, browser/proxy).
+- **`CLOB_HOST`** – **Do not edit** – CLOB API host (default `https://clob.polymarket.com`).
+- **`CHAIN_ID`** – **Do not edit** – Polygon chain ID (default `137`).
+- **`SIGNATURE_TYPE`** – Signature type for `ClobClient` (0=EOA/MetaMask, 1=Email/Magic, 2=Browser wallet). Edit this depending on your sign up method on Polymarket.
 
 ### Relayer / builder
 
-- **`RELAYER_URL`** – Relayer URL (default `https://relayer-v2.polymarket.com/`).
-- **`BUILDER_API_KEY`**, **`BUILDER_SECRET`**, **`BUILDER_PASS_PHRASE`** – credentials for the builder/relayer client (used by `blockchain_client.py`).
+- **`RELAYER_URL`** – **Do not edit** – Relayer URL (default `https://relayer-v2.polymarket.com/`).
+- **`BUILDER_API_KEY`**, **`BUILDER_SECRET`**, **`BUILDER_PASS_PHRASE`** – Credentials for the builder/relayer client. Create new Builder Keys in your builder settings (https://polymarket.com/settings?tab=builder).
 
 ### Bot behaviour
 
-- **`TARGET_TRADER_ADDRESS`** – **address to copy** (target).
-- **`POLL_INTERVAL`** – seconds between activity polls (default `1`).
-- **`RPC_URL`** – Polygon RPC endpoint (default `https://polygon-rpc.com`).
+- **`TARGET_TRADER_ADDRESS`** – **Address to copy** (target). Address obtained by clicking on the "Copy Address" button on someone's profile.
+- **`POLL_INTERVAL`** – Seconds between activity polls (default `1`).
+- **`RPC_URL`** – Polygon RPC endpoint used to track wallet USDC cash (default `https://polygon-rpc.com`).
 
 ### Logging
 
 - **`LOG_LEVEL`** – e.g. `INFO`, `DEBUG` (default `INFO`).
 - **`LOG_FILE`** – optional path to a log file (default `bot.log`).
+- **`HEARTBEAT_INTERVAL`** Seconds between Watcher heartbeats (signals to show the bot is still alive)
 
 ## Running the Bot
 
@@ -96,7 +97,7 @@ The bot will:
     - ratio = copier_position / target_position
   - For **BUY** trades:
     - Computes proportional **USDC** amount via `_get_proportional_amount(usdcSize, "USDC", "USDC")`.
-    - Places a **market order** with `MarketOrderArgs` and `OrderType.FOK`, using `ClobClient.create_market_order` and `ClobClient.post_order` (pattern taken from the official market buy example: [`market_buy_order.py`](https://github.com/Polymarket/py-clob-client/blob/main/examples/market_buy_order.py)).
+    - Places a **market order** with `MarketOrderArgs` and `OrderType.FOK`, using `ClobClient.create_market_order` and `ClobClient.post_order`.
   - For **SELL** trades:
     - Detects if the trader is exiting the full position and mirrors behaviour based on copier's holdings.
   - For **SPLIT / MERGE / REDEEM**:
